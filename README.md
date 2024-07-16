@@ -1,11 +1,13 @@
-# Projeto de Coleta de Dados: Personagens do Universo Resident Evil
+# Projeto de Coleta de Dados:
 ## Descrição do Projeto
 
-O objetivo desde projeto é realizar a raspagem de dados dos personagens do universo Resident Evil a partir de páginas do site Resident Evil Database. O projeto foi inspirado pelas aulas do [@TeoCalvo](https://github.com/TeoCalvo) no canal [Teo Me Why](https://www.youtube.com/@teomewhy).
+O objetivo desde projeto é realizar a raspagem de dados tanto de APIs quanto através de web scrapping de páginas web. O projeto foi inspirado pelas aulas do [@TeoCalvo](https://github.com/TeoCalvo) no canal [Teo Me Why](https://www.youtube.com/@teomewhy).
+
+Nesse projeto raspamos dados, utilizando técnicas de web scrapping dos personagens do universo Resident Evil a partir de páginas do site [Resident Evil Database](https://www.residentevildatabase.com/), e das APIs [TabNews](https://www.tabnews.com.br/GabrielSozinho/documentacao-da-api-do-tabnews) e API que [lista os NerdCasts do Jovem Nerd](https://api.jovemnerd.com.br/wp-json/jovemnerd/v1/nerdcasts/)
 
 ## Objetivos
 
-- Coletar dados detalhados sobre personagens do universo Resident Evil.
+- Coletar dados de APIs e através web scrapping de páginas web.
 - Estruturar os dados coletados em um formato acessível e utilizável para análises posteriores.
 - Demonstrar técnicas de raspagem de dados e manipulação de dados em Python.
 
@@ -56,22 +58,11 @@ pip install -r requirements.txt
 Execute o script de raspagem de dados:
 
 ```bash
-python ResidentEvil/scripts/scraper.py
+python {ResidentEvil | CollectAPIs}/scripts/collect.py
 ```
 
 Explore os dados utilizando os notebooks disponíveis em notebooks/.
 
-## Estrutura dos Dados
-
-Os dados coletados e limpos incluirão informações como:
-
-- Ano de Nascimento
-- Tipo Sanguíneo
-- Altura
-- Peso
-- Aparições
-- link
-- name
 
 ## Contribuição
 
