@@ -60,12 +60,11 @@ class Collector:
         else:
             logging.error(f"Error for {self.url}: {resp.status_code} - {resp.reason}")
 
-    @staticmethod
-    def get_last_date(data: dict) -> Optional[datetime.date]:
+    def get_last_date(self, data: dict) -> Optional[datetime.date]:
         last_date = None
-        if "updated_at" in data[-1]:
+        if self.service_name == "TabNews" and "updated_at" in data[-1]:
             last_date = datetime.strptime(data[-1]['updated_at'], "%Y-%m-%dT%H:%M:%S.%fZ").date()
-        if 'published_at' in data[-1]:
+        if self.service_name == "JovemNerd" and 'published_at' in data[-1]:
             last_date = datetime.strptime(data[-1]['published_at'], "%Y-%m-%dT%H:%M:%S%z").date()
         return last_date
 
@@ -78,12 +77,18 @@ class Collector:
                 logging.error(f"Error on collecting data from {self.url}, await 15 minutes")
                 time.sleep(60 * 15)
             else:
+                if len(data) == 0:
+                    logging.info(f"No more data to collect from {self.url}")
+                    break
                 last_date = self.get_last_date(data)
                 if last_date < date_stop:
+                    logging.info(f"Last date collected: {last_date} from {self.url}")
                     break
                 elif len(data) < 100:
+                    logging.info(f"No more data to collect from {self.url}")
                     break
                 page += 1
+                kwargs['page'] = page
                 time.sleep(5)
 
 
